@@ -115,10 +115,7 @@ namespace gasc
                     condition = 2;
                 }
             }
-            public Variable Run(Hashtable basehashtable)
-            {
-                return null;
-            }
+            
 
             public void ToXml(XmlDocument xmlDocument,XmlElement xmlElement)
             {
@@ -271,20 +268,6 @@ namespace gasc
             return sb.ToString();
         }
 
-        /// <summary>
-        /// 获取不干扰原变量表的新变量表
-        /// </summary>
-        /// <param name="basehashtable">原变量表</param>
-        /// <returns>新变量表</returns>
-        public static Hashtable GetOwnVariables(Hashtable basehashtable)
-        {
-            Hashtable hashtable = new Hashtable();
-            foreach (DictionaryEntry inbase in basehashtable)
-            {
-                hashtable.Add(inbase.Key, inbase.Value);
-            }
-            return hashtable;
-        }
         
         internal static int IsEqualExist(string code)
         {
@@ -356,12 +339,7 @@ namespace gasc
              .Replace("\\\\", "\\");
         }
 
-        public static T GetTrueVariable<T>(Hashtable oldhs, string variablename)
-        {
-            T t = (T)((Variable)oldhs[variablename]).value;
-            return t;
-        }
-
+      
         public Variable(object o)
         {
             value = o;
