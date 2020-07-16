@@ -342,10 +342,10 @@ fun Test(t1,t2):
                         clscontents.Add(libcontents[index].Substring(4));
                     }
                     ClsCreat(content, clscontents, xmlDocument, x_lib);
-                    xmlElement.AppendChild(x_lib);
+                    
                 }
                 else { Console.WriteLine("Fuckkkkk");return; }
-
+                xmlElement.AppendChild(x_lib);
             }
         }
 

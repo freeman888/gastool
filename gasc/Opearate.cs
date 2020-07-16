@@ -101,41 +101,7 @@ namespace gasc
 
         }
 
-        // ",", ";", "=", ">", "~", "<", "@", "#", "$", "+", "-", "*", "/", "%", "!", "^", "Β", "Α","&" 
-        private static int GetM(ArrayList codes,int charindex)
-        {
-            ArrayList a = new ArrayList(), arr_left = new ArrayList(), arr_right = new ArrayList();
-            a.Add("GetM(");
-            string[] stops = new string[] { ",", ";", "=", ">", "~", "<", "@", "#", "$", "+", "-", "*", "/", "%", "^", "Β", "Α", "&" };
-
-            int left = FindLeft(codes, charindex, stops);
-            
-            
-            ArrayList arrayList = new ArrayList(stops);
-            arrayList.Add("(");
-            int right = charindex;
-            for (; !arrayList.Contains(codes[right]); right++) ;
-
-            //int right = FindRight(codes, charindex, stops);
-
-            for (int i = left; i < charindex; i++)
-            {
-                arr_left.Add(codes[i]);
-            }
-            for (int i = charindex + 1; i < right; i++)
-            {
-                arr_right.Add(codes[i]);
-            }
-
-            a.InsertRange(a.Count, arr_left);
-            a.Add(",\"");
-            a.InsertRange(a.Count, arr_right);
-            a.Add("\")");
-
-            codes.RemoveRange(left, right - left );
-            codes.InsertRange(left, a);
-            return left;
-        }
+        
         // ",", ";", "=", ">", "~", "<", "@", "#", "$", "+", "-", "*", "/", "%", "!", "^", "Β", "Α","&" 
         private static int NotChange(ArrayList codes, int charindex)
         {
@@ -167,14 +133,14 @@ namespace gasc
             switch (methord)
             {
                 case "*":
-                a.Add("Math.Mul");
+                a.Add("Multiply");
                 a.Add("(");
                 break;
                 case "/":
-                a.Add("Math.Div"); a.Add("(");
+                a.Add("Divide"); a.Add("(");
                 break;
                 case "%":
-                a.Add("Math.MOD"); a.Add("(");
+                a.Add("MOD"); a.Add("(");
                 break;
             }
 
@@ -209,15 +175,15 @@ namespace gasc
             switch (methord)
             {
                 case "+":
-                a.Add("Math.Sum");
+                a.Add("Sum");
                 a.Add("(");
                 break;
                 case "-":
-                a.Add("Math.Del");
+                a.Add("Subtract");
                 a.Add("(");
                 break;
                 case "&":
-                a.Add("String.Add");
+                a.Add("StringAdd");
                 a.Add("(");
                 break;
             }
@@ -255,35 +221,35 @@ namespace gasc
             switch (methord)
             {
                 case ">":
-                a.Add("Math.B");
+                a.Add("Bigger");
                 a.Add("(");
                 break;
                 case "~":
-                a.Add("Math.BE");
+                a.Add("BiggerAndEqual");
                 a.Add("(");
                 break;
 
                 case "<":
-                a.Add("Math.S");
+                a.Add("Smaller");
                 a.Add("(");
                 break;
 
                 case "@":
-                a.Add("Math.SE");
+                a.Add("SmallerAndEqual");
                 a.Add("(");
                 break;
 
                 case "#":
-                a.Add("Math.E");
+                a.Add("Equal");
                 a.Add("(");
                 break;
 
                 case "$":
-                a.Add("Math.UE");
+                a.Add("UnEqual");
                 a.Add("(");
                 break;
                 case "Α":
-                a.Add("String.IsEqual");
+                a.Add("StringIsEqual");
                 a.Add("(");
                 break;
             }
@@ -322,13 +288,13 @@ namespace gasc
             ArrayList a = new ArrayList(), arr_left = new ArrayList(), arr_right = new ArrayList();
             if (methord == "^")
             {
-                a.Add("Math.CA");
+                a.Add("CompareAnd");
 
                 a.Add("(");
             }
             else
             {
-                a.Add("Math.CO");
+                a.Add("CompareOr");
 
                 a.Add("(");
             }
