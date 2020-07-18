@@ -349,10 +349,20 @@ fun Test(t1,t2):
             }
         }
 
-        private static void ClsCreat(string clsname, List<string> clscontents, XmlDocument xmlDocument, XmlElement x_lib)
+        private static void ClsCreat(string cls, List<string> clscontents, XmlDocument xmlDocument, XmlElement x_lib)
         {
             XmlElement x_cls = xmlDocument.CreateElement("cls");
-            x_cls.SetAttribute("name", clsname);
+            string cls_name = cls,cls_parent = "";
+            var i = cls.IndexOf("(");
+            if(i!= -1)
+            {
+                cls_name = cls.Substring(0, i);
+                cls_parent = cls.Substring(i+1,cls.IndexOf(")")-i-1);
+
+            }
+
+            x_cls.SetAttribute("name", cls_name);
+            x_cls.SetAttribute("parent", cls_parent);
             for(var index = 0;index<clscontents.Count;)
             {
                 var code = clscontents[index];
@@ -401,11 +411,11 @@ fun Test(t1,t2):
 
 
                     new_User_Function.ToXml(xmlDocument, x_cls);
-                    x_lib.AppendChild(x_cls);
+                    
                     //432432432fafa
                 }
                 else { Console.WriteLine("Wrong!");return; }
-
+                x_lib.AppendChild(x_cls);
             }
         }
     }
