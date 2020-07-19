@@ -111,59 +111,5 @@ namespace gasc
             }
         }
 
-        ///// <summary>
-        ///// 函数启动器（安全）
-        ///// </summary>
-        ///// <param name="funname"></param>
-        ///// <param name="variable"></param>
-        //public static void FuncStarter(string funname,Hashtable variable)
-        //{
-        //    try
-        //    {
-        //        ((MainWindow. sarray_Sys_Variables[funname] as Variable).value as IFunction).IRun(variable);
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        MessageBox.Show("[-] 错误" + Environment.NewLine + ex.Message, "错误", MessageBoxButton.OK, MessageBoxImage.Error);
-        //    }
-        //}
-        ///// <summary>
-        ///// 函数启动器（安全）,返回值
-        ///// </summary>
-        ///// <param name="funname"></param>
-        ///// <param name="variable"></param>
-        ///// <param name="ret"></param>
-        ///// 
-        //public static void FuncStarter(string funname, Hashtable variable,out Variable ret)
-        //{
-        //    try
-        //    {
-        //        ret = (Variable) ((MainWindow.sarray_Sys_Variables[funname] as Variable).value as IFunction).IRun(variable);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ret = new Variable(0);
-        //        MessageBox.Show("[-] 错误" + Environment.NewLine + ex.Message, "错误", MessageBoxButton.OK, MessageBoxImage.Error);
-        //    }
-        //}
-
-        ///// <summary>
-        ///// 函数直接启动器（安全）
-        ///// </summary>
-        ///// <param name="function"></param>
-        ///// <param name="variable"></param>
-        ///// <param name="ret"></param>
-        //public static void FuncStarter(IFunction function, Hashtable variable, out Variable ret)
-        //{
-        //    try
-        //    {
-        //        ret = (Variable)function.IRun(variable);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ret = new Variable(0);
-        //        MessageBox.Show("[-] 错误" + Environment.NewLine + ex.Message, "错误", MessageBoxButton.OK, MessageBoxImage.Error);
-        //    }
-        //}
     }
 }
